@@ -1,5 +1,5 @@
 """
-URL configuration for webproject project.
+URL configuration for webmartes project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/6.0/topics/http/urls/
@@ -18,6 +18,6 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-    path('api01/', include('api01.urls')),
-    path('admin/', admin.site.urls),
+    path('practica/', include('practica.urls')),
+    path('admin/', admin.site.urls)
 ]
