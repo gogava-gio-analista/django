@@ -1,0 +1,72 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Lista de mascotas</h1>
+    {%for m in lista%}
+        <h2>Nombre:{{m.nombre}}, Raza:{{m.raza}}, Edad:{{m.edad}}</h2>
+    {%endfor%}
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Mascotas</title>
+    <style>
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            font-family: Arial, sans-serif;
+        }
+
+        th, td {
+            border: 1px solid #523e3e;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #528454;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #ca6e6e;
+        }
+
+        h1 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<a href="../prueba">ir a prueba</a>
+    <h1>Lista de mascotas</h1>
+
+    <table>
+        <tr>
+            <th>Nombre</th>
+            <th>Raza</th>
+            <th>Edad</th>
+        </tr>
+
+        {% for m in lista %}
+        <tr>
+            <td>{{ m.nombre }}</td>
+            <td>{{ m.raza }}</td>
+            <td>{{ m.edad }}</td>
+        </tr>
+        {% endfor %}
+
+    </table>
+
+</body>
+</html>
