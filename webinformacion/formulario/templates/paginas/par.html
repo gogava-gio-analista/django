@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="/"><h3>ir a index</h3></a>
+    <h1>Clacular si es par o no</h1>
+    <form method="post">
+        {%csrf_token%}
+        Numero: <input type="number" name="num"/><br/>
+        <button>Calcular</button>
+    </form>
+    {% if res %}
+    <h2>El numero es: {{res}}</h2>
+    {% endif %}
+</body>
+</html>
