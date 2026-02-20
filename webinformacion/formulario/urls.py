@@ -8,4 +8,8 @@ urlpatterns=[
     path('sumar/', views.sumar, name='sumar'),
     path('par/', views.par, name='par'),
     path('colat/', views.colat, name='colat'),
+    path('tabla/', views.tabla, name='tabla'),
+    path('deportes/', views.deportes, name='deportes'),
+    path('color/', views.color, name='color'),
+    path('comics/', views.comics, name='comics'),
 ]

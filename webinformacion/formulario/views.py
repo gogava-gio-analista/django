@@ -63,3 +63,95 @@ def colat(request):
         return render(request, 'paginas/colat.html', informacion)
     else:  
         return render(request, 'paginas/colat.html')
+    
+def tabla(request):
+    if ('num' in request.POST):
+        numero = int(request.POST['num'])
+        lista = []
+        for n in range(1,11):
+            res = numero * n 
+            lista.append(res)
+        info = {
+            'listares':lista
+        }
+        return render(request, 'paginas/tabla.html', info)
+    else:
+        return render(request, 'paginas/tabla.html')
+    
+def deportes(request):
+    listaDeportes = ['Futbol', 'Petanca', 'Curling', 'Dardos', 'Rana', 'Baloncesto', 'Snooker', 'Rugby']
+    if ('selectdeporte' in request.POST):
+        deporte = request.POST['selectdeporte']
+        info = {
+            'listadeportes':listaDeportes,
+            'deporte':deporte
+        }
+        return render(request, 'paginas/deportes.html', info)
+    else:
+        info = {
+            'listadeportes':listaDeportes
+        }
+        return render(request, 'paginas/deportes.html', info)
+    
+def color(request):
+    listacoloreses = {
+        'red':'Rojo', 
+        'yellow':'Amarillo', 
+        'green':'Verde', 
+        'blue':'Azul'
+        }
+    if ('selectdeporte' in request.POST):
+        color = request.POST['selectdeporte']
+        info = {
+            'listacolores':listacoloreses,
+            'deporte':color,
+            'coloress':listacoloreses[color]
+        }
+        return render(request, 'paginas/color.html', info)
+    else:
+        info = {
+            'listacolores':listacoloreses
+        }
+        return render(request, 'paginas/color.html', info)
+    
+def comics(request):
+    listacomics = [
+        {
+            "index": 0,
+            "titulo": "Spiderman",
+            "imagen": "https://elcoleccionistacomics.com/60266-medium_default/spiderman-de-todd-mcfarlane-vol1-de-6.jpg"
+        },
+        {
+            "index": 1,
+            "titulo": "Spawn",
+            "imagen": "https://m.media-amazon.com/images/I/91hZO1pjAoL._AC_UF1000,1000_QL80_.jpg"
+        },
+        {
+            "index": 2,
+            "titulo": "Wolverine",
+            "imagen": "https://www.kamekame.es/53918-large_default/marvel-omnibus-dinastia-de-x-potencias-de-x-comic.jpg"
+        },
+        {
+            "index": 3,
+            "titulo": "Wolverine",
+            "imagen": "https://www.kamekame.es/53918-large_default/marvel-omnibus-dinastia-de-x-potencias-de-x-comic.jpg"
+        },
+        {
+            "index": 4,
+            "titulo": "Asterix y Obelix",
+            "imagen": "https://comicsbarcelona.com/wp-content/uploads/2015/11/127913-Asterix-2.-La-Hoz-de-Oro.jpg"
+        }
+    ]
+    if ('selectcomic' in request.POST):
+        indice = int(request.POST['selectcomic'])
+        comic = listacomics[indice]
+        info = {
+            'listacomics':listacomics,
+            'comic':comic
+        }
+        return render(request, 'paginas/comics.html', info)
+    else:
+        info = {
+            'listacomics':listacomics
+        }
+        return render(request, 'paginas/comics.html', info)

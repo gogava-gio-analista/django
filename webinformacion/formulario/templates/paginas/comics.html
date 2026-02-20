@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% include 'paginas/menu.html' %}
+    <h1>Comics</h1>
+    <form method="post">
+        {%csrf_token%}
+        Seleccione un comic:
+        <select name="selectcomic">
+            {%for c in listacomics%}
+                <option value="{{c.index}}">
+                    {{c.titulo}}
+                </option>
+            {%endfor%}
+        </select>
+        <button>Mostrar comic</button>
+    </form>
+    {% if comic %}
+        <h2>Tu omic seleccionado es: {{ comic.titulo }}</h2>
+        <img src="{{comic.imagen}}"/>
+    {% endif %}
+</body>
+</html>
