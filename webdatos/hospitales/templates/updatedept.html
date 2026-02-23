@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% include 'menu.html' %}
+    <h1>Update departamentos</h1>
+    <form method="post">
+        {% csrf_token %}
+        Seleccione Id departamento:
+        <select name="cajaid">
+            {%for i in listaids%}
+                <option value="{{i.id}}">
+                    {{i.id}}
+                </option>
+            {%endfor%}
+        </select>
+        Nombre:
+        <input type="text" name="cajanombre"/><br/>
+        Localidad:
+        <input type="text" name="cajalocalidad"/><br/>
+        <button>Update</button>
+    </form>
+</body>
+</html>

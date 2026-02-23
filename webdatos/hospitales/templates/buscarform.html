@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% include 'menu.html' %}
+    <h1>Buscar departamentos</h1>
+    <form>
+        {% csrf_token %}
+        Id departamento:
+        <input type="number" name="cajaid"/>
+        <button>Buscar</button>
+    </form>
+    {% if departamento %}
+        <h2>{{departamento.nombre}} - {{departamento.localidad}}</h2>
+    {% endif %}
+</body>
+</html>
