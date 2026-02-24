@@ -37,6 +37,14 @@ def updatedept(request):
             'listaids':listaids
         }
         return render(request, 'updatedept.html', info)
+    elif ('dato' in request.GET):
+        service = md.ServiceDepartamentos()
+        id = int(request.GET['dato'])
+        dept = service.buscardept(id)
+        info = {
+            'departamento':dept
+        }
+        return render(request, 'updatedept.html', info)
     else:
         service = md.ServiceDepartamentos()
         listaids = service.getDepartamentos()

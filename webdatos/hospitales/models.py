@@ -7,6 +7,13 @@ class Departamento:
         self.nombre = ''
         self.localidad = ''
 
+class Empleado:
+    def __init__(self):
+        self.idempleado = 0
+        self.apellido = ''
+        self.oficio = ''
+        self.salario = 0
+
 class ServiceDepartamentos:
     def __init__(self):
         self.connection = oracledb.connect(user='system',
@@ -36,7 +43,7 @@ class ServiceDepartamentos:
 
     def updatedept(self, id, nombre, loc):
         cursor = self.connection.cursor()
-        sql = 'update dept set nombre=:nom, loc=:loc where id=:id'
+        sql = 'update dept set dnombre=:nom, loc=:loc where dept_no=:id'
         cursor.execute(sql, (nombre, loc, id,))
         self.connection.commit()
         cursor.close()
@@ -52,3 +59,18 @@ class ServiceDepartamentos:
         dept.localidad = row[2]
         cursor.close()
         return dept 
+    
+    def buscarempleadosdepartamento(self, iddept):
+        sql = 'select emp_no, apellido, oficio, salario from emp where dept_no=:iddept'
+        cursor = self.connection.cursor()
+        cursor.execute(sql, (iddept,))
+        listaempleados = []
+        for row in cursor:
+            emp = Empleado()
+            emp.idempleado = row[0]
+            emp.apellido = row[1]
+            emp.oficio = row[2]
+            emp.salario = row[3]
+            listaempleados.append(emp)
+        cursor.close()
+        return listaempleados
